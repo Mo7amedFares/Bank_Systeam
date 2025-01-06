@@ -23,9 +23,9 @@ private:
     string _PrepareLogInRecord(string Seperator = "#//#") {
         string LoginRecord = "";
         LoginRecord += clsDate::GetSystemDateTimeString() + Seperator;
-        LoginRecord += UserName + Seperator;
-        LoginRecord += clsUtil::EncryptText(Password) + Seperator;
-        LoginRecord += to_string(Permissions);
+        LoginRecord += GetUserName() + Seperator;
+        LoginRecord += clsUtil::EncryptText(GetPassword()) + Seperator;
+        LoginRecord += to_string(GetPermissions());
         return LoginRecord;
     }
 
@@ -41,13 +41,13 @@ private:
 
     static string _ConverUserObjectToLine(clsUser User, string Seperator = "#//#") {
         string UserRecord = "";
-        UserRecord += User.FirstName + Seperator;
-        UserRecord += User.LastName + Seperator;
-        UserRecord += User.Email + Seperator;
-        UserRecord += User.Phone + Seperator;
-        UserRecord += User.UserName + Seperator;
-        UserRecord += clsUtil::EncryptText(User.Password) + Seperator;
-        UserRecord += to_string(User.Permissions);
+        UserRecord += User.GetFirstName() + Seperator;
+        UserRecord += User.GetLastName() + Seperator;
+        UserRecord += User.GetEmail() + Seperator;
+        UserRecord += User.GetPhone() + Seperator;
+        UserRecord += User.GetUserName() + Seperator;
+        UserRecord += clsUtil::EncryptText(User.GetPassword()) + Seperator;
+        UserRecord += to_string(User.GetPermissions());
         return UserRecord;
     }
 
@@ -84,7 +84,7 @@ private:
     void _Update() {
         vector<clsUser> _vUsers = _LoadUsersDataFromFile();
         for (clsUser& U : _vUsers) {
-            if (U.UserName == UserName) {
+            if (U.GetUserName() == GetUserName()) {
                 U = *this;
                 break;
             }
@@ -169,7 +169,6 @@ public:
         _UserName = UserName;
     }
 
-    __declspec(property(get = GetUserName, put = SetUserName)) string UserName;
 
     void SetPassword(string Password) {
         _Password = Password;
@@ -179,7 +178,6 @@ public:
         return _Password;
     }
 
-    __declspec(property(get = GetPassword, put = SetPassword)) string Password;
 
     void SetPermissions(int Permissions) {
         _Permissions = Permissions;
@@ -189,7 +187,6 @@ public:
         return _Permissions;
     }
 
-    __declspec(property(get = GetPermissions, put = SetPermissions)) int Permissions;
 
     static clsUser Find(string UserName) {
         fstream MyFile;
@@ -199,7 +196,7 @@ public:
             string Line;
             while (getline(MyFile, Line)) {
                 clsUser User = _ConvertLinetoUserObject(Line);
-                if (User.UserName == UserName) {
+                if (User.GetUserName() == UserName) {
                     MyFile.close();
                     return User;
                 }
@@ -217,7 +214,7 @@ public:
             string Line;
             while (getline(MyFile, Line)) {
                 clsUser User = _ConvertLinetoUserObject(Line);
-                if (User.UserName == UserName && User.Password == Password) {
+                if (User.GetUserName() == UserName && User.GetPassword() == Password) {
                     MyFile.close();
                     return User;
                 }
@@ -258,7 +255,7 @@ public:
     bool Delete() {
         vector<clsUser> _vUsers = _LoadUsersDataFromFile();
         for (clsUser& U : _vUsers) {
-            if (U.UserName == _UserName) {
+            if (U.GetUserName() == _UserName) {
                 U._MarkedForDelete = true;
                 break;
             }
@@ -277,9 +274,9 @@ public:
     }
 
     bool CheckAccessPermission(enPermissions Permission) {
-        if (this->Permissions == enPermissions::eAll)
+        if (this->GetPermissions() == enPermissions::eAll)
             return true;
-        if ((Permission & this->Permissions) == Permission)
+        if ((Permission & this->GetPermissions()) == Permission)
             return true;
         else
             return false;

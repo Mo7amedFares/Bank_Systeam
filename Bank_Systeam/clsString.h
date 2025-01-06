@@ -32,7 +32,6 @@ public:
         return _Value;
     }
 
-    __declspec(property(get = GetValue, put = SetValue)) string Value;
 
 
     static short Length(string S1)
@@ -50,7 +49,7 @@ public:
 
         string delim = " "; // delimiter  
         short Counter = 0;
-        short pos = 0;
+        size_t pos = 0;
         string sWord; // define a string variable  
 
         // use find() function to get the position of the delimiters  
@@ -85,7 +84,7 @@ public:
 
         bool isFirstLetter = true;
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
 
             if (S1[i] != ' ' && isFirstLetter)
@@ -112,7 +111,7 @@ public:
 
         bool isFirstLetter = true;
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
 
             if (S1[i] != ' ' && isFirstLetter)
@@ -138,7 +137,7 @@ public:
 
     static string  UpperAllString(string S1)
     {
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
             S1[i] = toupper(S1[i]);
         }
@@ -152,7 +151,7 @@ public:
 
     static string  LowerAllString(string S1)
     {
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
             S1[i] = tolower(S1[i]);
         }
@@ -171,7 +170,7 @@ public:
 
     static string  InvertAllLettersCase(string S1)
     {
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
             S1[i] = InvertLetterCase(S1[i]);
         }
@@ -196,7 +195,7 @@ public:
 
         short Counter = 0;
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
 
             if (WhatToCount == enWhatToCount::CapitalLetters && isupper(S1[i]))
@@ -218,7 +217,7 @@ public:
 
         short Counter = 0;
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
 
             if (isupper(S1[i]))
@@ -239,7 +238,7 @@ public:
 
         short Counter = 0;
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
 
             if (islower(S1[i]))
@@ -260,7 +259,7 @@ public:
 
         short Counter = 0;
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
 
             if (MatchCase)
@@ -297,7 +296,7 @@ public:
 
         short Counter = 0;
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
 
             if (IsVowel(S1[i]))
@@ -319,7 +318,7 @@ public:
 
         vector<string> vString;
 
-        short pos = 0;
+        size_t pos = 0;
         string sWord; // define a string variable  
 
         // use find() function to get the position of the delimiters  
@@ -352,7 +351,7 @@ public:
     {
 
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
             if (S1[i] != ' ')
             {
@@ -496,7 +495,7 @@ public:
 
         string S2 = "";
 
-        for (short i = 0; i < S1.length(); i++)
+        for (size_t i = 0; i < S1.length(); i++)
         {
             if (!ispunct(S1[i]))
             {

@@ -14,7 +14,7 @@ private:
     {
         cout << setw(25) << left << "" << "| " << setw(15) << left << Client.AccountNumber();
         cout << "| " << setw(40) << left << Client.FullName();
-        cout << "| " << setw(12) << left << Client.AccountBalance;
+        cout << "| " << setw(12) << left << Client.GetAccountBalance();
     }
 
 public:

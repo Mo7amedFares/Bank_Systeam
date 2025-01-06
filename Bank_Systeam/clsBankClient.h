@@ -34,13 +34,13 @@ private:
     {
 
         string stClientRecord = "";
-        stClientRecord += Client.FirstName + Seperator;
-        stClientRecord += Client.LastName + Seperator;
-        stClientRecord += Client.Email + Seperator;
-        stClientRecord += Client.Phone + Seperator;
+        stClientRecord += Client.GetFirstName() + Seperator;
+        stClientRecord += Client.GetLastName() + Seperator;
+        stClientRecord += Client.GetEmail() + Seperator;
+        stClientRecord += Client.GetPhone() + Seperator;
         stClientRecord += Client.AccountNumber() + Seperator;
-        stClientRecord += Client.PinCode + Seperator;
-        stClientRecord += to_string(Client.AccountBalance);
+        stClientRecord += Client.GetPinCode() + Seperator;
+        stClientRecord += to_string(Client.GetAccountBalance());
 
         return stClientRecord;
 
@@ -161,8 +161,8 @@ private:
         TransferLogRecord += AccountNumber() + Seperator;
         TransferLogRecord += DestinationClient.AccountNumber() + Seperator;
         TransferLogRecord += to_string(Amount) + Seperator;
-        TransferLogRecord += to_string(AccountBalance) + Seperator;
-        TransferLogRecord += to_string(DestinationClient.AccountBalance) + Seperator;
+        TransferLogRecord += to_string(GetAccountBalance()) + Seperator;
+        TransferLogRecord += to_string(DestinationClient.GetAccountBalance()) + Seperator;
         TransferLogRecord += UserName;
         return TransferLogRecord;
     }
@@ -255,7 +255,6 @@ public:
     {
         return _PinCode;
     }
-    __declspec(property(get = GetPinCode, put = SetPinCode)) string PinCode;
 
     void SetAccountBalance(float AccountBalance)
     {
@@ -266,7 +265,6 @@ public:
     {
         return _AccountBalance;
     }
-    __declspec(property(get = GetAccountBalance, put = SetAccountBalance)) float AccountBalance;
 
 
     static clsBankClient Find(string AccountNumber)
@@ -311,7 +309,7 @@ public:
             while (getline(MyFile, Line))
             {
                 clsBankClient Client = _ConvertLinetoClientObject(Line);
-                if (Client.AccountNumber() == AccountNumber && Client.PinCode == PinCode)
+                if (Client.AccountNumber() == AccountNumber && Client.GetPinCode() == PinCode)
                 {
                     MyFile.close();
                     return Client;
@@ -448,7 +446,7 @@ public:
         for (clsBankClient Client : vClients)
         {
 
-            TotalBalances += Client.AccountBalance;
+            TotalBalances += Client.GetAccountBalance();
         }
 
         return TotalBalances;
@@ -456,7 +454,7 @@ public:
 
     bool Transfer(float Amount, clsBankClient& DestinationClient, string UserName)
     {
-        if (Amount > AccountBalance)
+        if (Amount > GetAccountBalance())
         {
             return false;
         }

@@ -14,10 +14,10 @@ private:
 
         cout << setw(8) << left << "" << "| " << setw(15) << left << Client.AccountNumber();
         cout << "| " << setw(20) << left << Client.FullName();
-        cout << "| " << setw(12) << left << Client.Phone;
-        cout << "| " << setw(20) << left << Client.Email;
-        cout << "| " << setw(10) << left << Client.PinCode;
-        cout << "| " << setw(12) << left << Client.AccountBalance;
+        cout << "| " << setw(12) << left << Client.GetPhone();
+        cout << "| " << setw(20) << left << Client.GetEmail();
+        cout << "| " << setw(10) << left << Client.GetPinCode();
+        cout << "| " << setw(12) << left << Client.GetAccountBalance();
 
     }
 

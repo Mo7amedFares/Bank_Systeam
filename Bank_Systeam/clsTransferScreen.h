@@ -15,7 +15,7 @@ private:
         cout << "\n___________________\n";
         cout << "\nFull Name   : " << Client.FullName();
         cout << "\nAcc. Number : " << Client.AccountNumber();
-        cout << "\nBalance     : " << Client.AccountBalance;
+        cout << "\nBalance     : " << Client.GetAccountBalance();
         cout << "\n___________________\n";
 
     }
@@ -59,7 +59,7 @@ private:
 
         Amount = clsInputValidate<float>::ReadTNumber();
 
-        while (Amount > SourceClient.AccountBalance)
+        while (Amount > SourceClient.GetAccountBalance())
         {
             cout << "\nAmount Exceeds the available Balance, Enter another Amount ? ";
             Amount = clsInputValidate<double>::ReadTNumber();
@@ -90,7 +90,7 @@ public:
         cin >> Answer;
         if (Answer == 'Y' || Answer == 'y')
         {
-            if (SourceClient.Transfer(Amount, DestinationClient, CurrentUser.UserName))
+            if (SourceClient.Transfer(Amount, DestinationClient, CurrentUser.GetUserName()))
             {
                 cout << "\nTransfer done successfully\n";
             }

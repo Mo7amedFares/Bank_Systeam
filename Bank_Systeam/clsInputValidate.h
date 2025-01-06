@@ -4,6 +4,7 @@
 #include <string>
 #include "clsString.h"
 #include "clsDate.h"
+#include <limits>
 
 template<typename T>
 class clsInputValidate

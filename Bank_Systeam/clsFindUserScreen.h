@@ -13,14 +13,14 @@ private:
     {
         cout << "\nUser Card:";
         cout << "\n___________________";
-        cout << "\nFirstName   : " << User.FirstName;
-        cout << "\nLastName    : " << User.LastName;
+        cout << "\nFirstName   : " << User.GetFirstName();
+        cout << "\nLastName    : " << User.GetLastName();
         cout << "\nFull Name   : " << User.FullName();
-        cout << "\nEmail       : " << User.Email;
-        cout << "\nPhone       : " << User.Phone;
-        cout << "\nUserName    : " << User.UserName;
-        cout << "\nPassword    : " << User.Password;
-        cout << "\nPermissions : " << User.Permissions;
+        cout << "\nEmail       : " << User.GetEmail();
+        cout << "\nPhone       : " << User.GetPhone();
+        cout << "\nUserName    : " << User.GetUserName();
+        cout << "\nPassword    : " << User.GetPassword();
+        cout << "\nPermissions : " << User.GetPermissions();
         cout << "\n___________________\n";
 
     }

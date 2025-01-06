@@ -14,14 +14,14 @@ private:
     {
         cout << "\nClient Card:";
         cout << "\n___________________";
-        cout << "\nFirstName   : " << Client.FirstName;
-        cout << "\nLastName    : " << Client.LastName;
+        cout << "\nFirstName   : " << Client.GetFirstName();
+        cout << "\nLastName    : " << Client.GetLastName();
         cout << "\nFull Name   : " << Client.FullName();
-        cout << "\nEmail       : " << Client.Email;
-        cout << "\nPhone       : " << Client.Phone;
+        cout << "\nEmail       : " << Client.GetEmail();
+        cout << "\nPhone       : " << Client.GetPhone();
         cout << "\nAcc. Number : " << Client.AccountNumber();
-        cout << "\nPassword    : " << Client.PinCode;
-        cout << "\nBalance     : " << Client.AccountBalance;
+        cout << "\nPassword    : " << Client.GetPinCode();
+        cout << "\nBalance     : " << Client.GetAccountBalance();
         cout << "\n___________________\n";
 
     }
@@ -65,7 +65,7 @@ public:
         {
             Client1.Deposit(Amount);
             cout << "\nAmount Deposited Successfully.\n";
-            cout << "\nNew Balance Is: " << Client1.AccountBalance;
+            cout << "\nNew Balance Is: " << Client1.GetAccountBalance();
 
         }
         else
